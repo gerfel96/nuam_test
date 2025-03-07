@@ -106,3 +106,14 @@ networks:
   - La opción depends_on asegura que el contenedor de la base de datos se inicie antes de la aplicación.
   - Crea las variables de entorno que ejecutará en el docker
 
+### Comandos de inicio
+
+Para construir y ejecutar el proyecto en contenedores:
+```
+docker-compose up 
+```
+Para detener y eliminar contenedores:
+```
+docker-compose down
+```
+
