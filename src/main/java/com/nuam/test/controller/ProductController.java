@@ -2,17 +2,16 @@ package com.nuam.test.controller;
 
 import com.nuam.test.entity.ProductEntity;
 import com.nuam.test.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
 @RestController
 @RequestMapping("product")
-@Validated
 public class ProductController {
 
     @Autowired
@@ -43,7 +42,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductEntity> createProduct(@RequestBody ProductEntity product){
+    public ResponseEntity<ProductEntity> createProduct(@Valid @RequestBody ProductEntity product){
         try{
             ProductEntity newProduct = productService.createProduct(product);
             return ResponseEntity.ok(newProduct);
@@ -54,7 +53,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductEntity> updateProduct(@PathVariable Integer id, @RequestBody ProductEntity product){
+    public ResponseEntity<ProductEntity> updateProduct(@PathVariable Integer id,@Valid @RequestBody ProductEntity product){
         try{
             ProductEntity updatedProduct = productService.updateProduct(id, product);
             return ResponseEntity.ok(updatedProduct);
